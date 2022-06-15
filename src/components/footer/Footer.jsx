@@ -67,8 +67,8 @@ const connected = [
 const findUs = ['Store Locatior', 'Global Locations'];
 function Footer() {
   return (
-    <Box maxW="" fontSize={'0.8rem'} mx="auto">
-      <Box>
+    <Box fontSize={'0.8rem'} my={4} mx="auto" pt={8} borderTop="4px solid lightgrey">
+      <Box w="100%" maxW="1100px" mx="auto">
         <Flex>
           <Box>
             <NewsLetter />
@@ -130,7 +130,6 @@ function Footer() {
           </Box>
         </Flex>
       </Box>
-     
     </Box>
   );
 }

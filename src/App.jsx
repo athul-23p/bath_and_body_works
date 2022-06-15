@@ -27,8 +27,8 @@ function App() {
       <Navbar />
       <Box w="100%" maxW="1100px" mx="auto">
         <AllRoutes />
-        <Footer />
       </Box>
+        <Footer />
       <Box bg="#f2f2f2" p={4} fontSize="0.85rem" >
         <Flex
           w="100%"
