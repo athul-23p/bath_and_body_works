@@ -48,8 +48,8 @@ function Shipping() {
   return (
     <Box>
       <Box>progress bar</Box>
-      <Flex>
-        <Box>
+      <Flex gap='10' justify={'space-between'}>
+        <Box w='500px'>
           <Box>
             <Heading>WELCOME BACK</Heading>
             <Heading color="purple">HI user,</Heading>
@@ -66,7 +66,7 @@ function Shipping() {
               <Input
                 id="first_name"
                 name="first_name"
-                value={formData}
+                value={formData.first_name}
                 onChange={handleChange}
               />
             </FormControl>

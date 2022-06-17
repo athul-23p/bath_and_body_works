@@ -42,13 +42,13 @@ function Billing() {
 
   const applyPromoCode = () => {}
   return (
-    <Box>
+    <Box w='fit-content' mx='auto'>
       <Box></Box>
-      <Flex>
-        <Box>
+      <Flex gap="5vw" justify={'space-between'}>
+        <Box w='500px'>
           <Box>
             <Heading>Billing Address</Heading>
-            <Box border="1px solid grey" p={4}>
+            <Box border="1px solid lightgrey" p={4}>
               <Text> firstname lastname</Text>
               <Text> address_1</Text>
               <Text> address_2</Text>
@@ -95,47 +95,69 @@ function Billing() {
                   </FormControl>
                 </AccordionPanel>
               </AccordionItem>
-
-              
             </Accordion>
           </Box>
           <Box>
             <Heading>PAYMENT METHOD</Heading>
             <RadioGroup>
-                <Flex>
-                    <HStack>
-                        <Radio value='credit_card'>Credit Card</Radio>
-                        <Image src='https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dwa46f619c/images/cc-strap-updated-4-4.png?yocs=o_s_'/>
-                    </HStack>
-                </Flex>
+              <Flex>
+                <HStack>
+                  <Radio value="credit_card">Credit Card</Radio>
+                  <Image src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dwa46f619c/images/cc-strap-updated-4-4.png?yocs=o_s_" />
+                </HStack>
+              </Flex>
             </RadioGroup>
             <FormControl isRequired>
-                <FormLabel htmlFor='name'>Name on Card</FormLabel>
-                <Input id='name' name='name' value={cardDetails.name}  onChange={handleCardDetails} />
+              <FormLabel htmlFor="name">Name on Card</FormLabel>
+              <Input
+                id="name"
+                name="name"
+                value={cardDetails.name}
+                onChange={handleCardDetails}
+              />
             </FormControl>
             <FormControl isRequired>
-                <FormLabel htmlFor='number'>Number</FormLabel>
-                <Input id='number' name='number' value={cardDetails.number}  onChange={handleCardDetails}/>
+              <FormLabel htmlFor="number">Number</FormLabel>
+              <Input
+                id="number"
+                name="number"
+                value={cardDetails.number}
+                onChange={handleCardDetails}
+              />
             </FormControl>
             <FormControl isRequired>
-                <FormLabel>Expiration Date</FormLabel>
-                <Stack direction={'row'}>
-                    <Select name='expiry_month' placholder='Month' w='max-content' textTransform={'capitalize'}>
-                       { months.map(month => <option value={month} >{month}</option>)}
-                    </Select>
-                    <Select w='max-content' placeholder='Year'>
-                        { years.map(year => <option value={year}>{year}</option>)}
-                    </Select>
-                </Stack>
+              <FormLabel>Expiration Date</FormLabel>
+              <Stack direction={'row'}>
+                <Select
+                  name="expiry_month"
+                  placholder="Month"
+                  w="max-content"
+                  textTransform={'capitalize'}
+                >
+                  {months.map(month => (
+                    <option value={month}>{month}</option>
+                  ))}
+                </Select>
+                <Select w="max-content" placeholder="Year">
+                  {years.map(year => (
+                    <option value={year}>{year}</option>
+                  ))}
+                </Select>
+              </Stack>
             </FormControl>
             <FormControl isRequired>
-                <FormLabel htmlFor='cvv'>Security Code</FormLabel>
-                <Input id='cvv' name='cvv' value={cardDetails.cvv} onChange={handleCardDetails} />
+              <FormLabel htmlFor="cvv">Security Code</FormLabel>
+              <Input
+                id="cvv"
+                name="cvv"
+                value={cardDetails.cvv}
+                onChange={handleCardDetails}
+              />
             </FormControl>
             <Button> REVIEW ORDER</Button>
           </Box>
         </Box>
-        <CartPreview/>
+        <CartPreview />
       </Flex>
     </Box>
   );
