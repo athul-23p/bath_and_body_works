@@ -14,7 +14,7 @@ const register = async (req, res) => {
 
     user = await User.create(req.body);
     // console.log(user);
-    return res.status(400).send(user);
+    return res.status(201).send(user);
   } catch (error) {
     return res.status(500).send(error);
   }

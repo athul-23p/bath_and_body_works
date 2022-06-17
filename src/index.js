@@ -1,8 +1,10 @@
 import { ColorModeScript } from '@chakra-ui/react';
 import React, { StrictMode } from 'react';
 import * as ReactDOM from 'react-dom/client';
+import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
 
@@ -13,7 +15,10 @@ root.render(
   <StrictMode>
     <ColorModeScript />
     <BrowserRouter>
+    <Provider store={store}>
       <App />
+
+    </Provider>
     </BrowserRouter>
   </StrictMode>
 );
