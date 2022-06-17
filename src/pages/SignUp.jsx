@@ -53,7 +53,7 @@ const initFormData = {
   password: '',
 };
 function SignUp() {
-  const [formData, setFormData] = useState(dup);
+  const [formData, setFormData] = useState(initFormData);
 
   const { isLoading, error } = useSelector(store => store.auth);
   const [inputErr, setInputErr] = useState(false);
