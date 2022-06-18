@@ -5,8 +5,14 @@ const Product = require('../models/product.model');
 
 router.get('',async (req,res) => {
     try {
-        let products = await Product.find();
-        return res.status(200).send({products,item_count:products.length});
+
+        const options = {
+            page:req.query.page || 1,
+            limit:48
+        }
+
+        let products = await Product.paginate({},options);
+        return res.status(200).send(products);
     } catch (error) {
         return res.status(400).send(error);
     }
