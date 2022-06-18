@@ -3,7 +3,7 @@ import { Box, Center, HStack, Text } from '@chakra-ui/react';
 function OfferBanner() {
   return (
     <Center sx={{
-        border:'1px solid'
+        border:'1px solid',
     }}>
       <HStack  w='max-content' 
         sx={{'& p':{

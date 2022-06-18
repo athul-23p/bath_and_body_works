@@ -11,6 +11,10 @@ import {
 } from '@chakra-ui/react';
 import Promo from '../components/home/Promo';
 import { Link as RouterLink } from 'react-router-dom';
+import AliceCarousel from 'react-alice-carousel';
+import 'react-alice-carousel/lib/alice-carousel.css';
+
+
 import styled from 'styled-components'
 import OfferBox from '../components/home/OfferBox';
 const Wrapper = styled.div`
@@ -208,6 +212,7 @@ const instaPics = [
   },
 ];
 
+const handleDragStart = e => e.preventDefault();
 
 function Home() {
   return (
@@ -216,11 +221,20 @@ function Home() {
 
       <Box as="section" bg="#f2f2f2" p={10} my={4} mx={'-32px'}>
         <Heading>Today's Top Offers</Heading>
-        <Flex flexWrap={'wrap'} overflow="hidden">
+        {/* <Flex flexWrap={'wrap'} overflow="hidden">
+    
           {todays_Offers.map(offer => (
             <OfferBox {...offer} />
           ))}
-        </Flex>
+        </Flex> */}
+
+        <AliceCarousel
+          mouseTracking
+          items={todays_Offers.map(offer => (
+            <OfferBox {...offer} />
+          ))}
+          responsive={{ 0: { items: 4 } }}
+        />
       </Box>
       <Box as="section">
         <Grid
@@ -285,10 +299,15 @@ function Home() {
             Daily Inspiration. Instant happiness. Right here
           </Text>
         </Box>
-        <Box w='100%'>
-           <HStack>
-            {instaPics.map(el => <Image boxSize={'200px'} src={el.img} />)}
-           </HStack>
+        <Box w="100%">
+         
+          <AliceCarousel
+            mouseTracking
+            items={instaPics.map(el => (
+              <Image boxSize={'200px'} src={el.img} />
+            ))}
+            responsive={{ 0: { items: 4 } }}
+          />
         </Box>
         <Box my={4}>
           <Text fontSize={'1.9rem'}>Bath & Body Works</Text>

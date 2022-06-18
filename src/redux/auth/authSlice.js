@@ -2,7 +2,7 @@ import axios from 'axios';
 import { createSlice,createAsyncThunk } from "@reduxjs/toolkit";
 
 const baseUrl = process.env.REACT_APP_API_URL;
-console.log(baseUrl,process.env);
+// console.log(baseUrl,process.env);
 const initialState = {
     isLoading:false,
     error:null,
@@ -68,6 +68,6 @@ const authSlice = createSlice({
   },
 });
 
-console.log(authSlice);
+// console.log(authSlice);
 
 export default authSlice.reducer;

@@ -1,4 +1,5 @@
 import { Route, Routes } from "react-router-dom";
+import Products from "../pages/Products";
 import Billing from "../pages/Billing";
 import Home from "../pages/Home";
 import Shipping from "../pages/Shipping";
@@ -12,9 +13,11 @@ function AllRoutes(){
         <Route path="/" element={<Home />} />
         <Route path="/sign-in" element={<SignIn />} />
         <Route path="/sign-up" element={<SignUp />} />
-        <Route path="/checkout/shipping"  element={<Shipping/>}/>
-        <Route path='/checkout/billing' element={<Billing/>} />
-        <Route path='/checkout/review-and-submit' />
+        <Route path="/checkout/shipping" element={<Shipping />} />
+        <Route path="/checkout/billing" element={<Billing />} />
+        <Route path="/checkout/review-and-submit" />
+        <Route path="/products/" element={<Products />} />
+        <Route path="/products/:section" element={<Products />} />
       </Routes>
     );
 }
