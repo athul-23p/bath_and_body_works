@@ -17,6 +17,8 @@ const productSchema = new mongoose.Schema({
   size: { type: String, required: true },
   old_price:{type:Number},
   price:{type:Number,required:true}
+},{
+  timestamps:true
 });
 
 productSchema.plugin(mongoosePaginate);

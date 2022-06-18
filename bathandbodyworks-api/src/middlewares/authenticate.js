@@ -21,4 +21,4 @@ function authenticateToken(req,res,next){
 }
 
 
-module.exports = authenticate;
+module.exports = authenticateToken;
