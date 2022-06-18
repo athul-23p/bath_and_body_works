@@ -17,6 +17,7 @@ import { FiSearch } from 'react-icons/fi';
 import NavMenu from './NavMenu';
 import { useSelector } from 'react-redux';
 import {Link as RouterLink} from 'react-router-dom'
+import UserMenu from './UserMenu';
 function Navbar() {
   const { total_items } = useSelector(store => store.cart);
   return (
@@ -29,12 +30,12 @@ function Navbar() {
       >
         <NavMenu />
 
-        <GridItem colStart={{base:5,md:7,lg:11}} colSpan={{base:14,md:11,lg:8}} >
+        <GridItem colStart={{base:8,md:7,lg:11}} colSpan={{base:11,md:7,lg:8}} >
           <Heading color={'purple.700'} ml="auto"minW='fit-content'>
             Bath & Body Works
           </Heading>
         </GridItem>
-        <GridItem colStart={{base:24,md:19}} colSpan={{base:1,md:6}}>
+        <GridItem colStart={{base:19,md:19}} colSpan={{base:5,md:6}}>
           <HStack justifySelf={'end'} spacing={'1.2rem'}>
             <InputGroup w="20vw" display={{ base: 'none', md: 'inline' }}>
               <Input placeholder="Search by fragrance or product" />
@@ -43,11 +44,7 @@ function Navbar() {
                 children={<FiSearch color="purple" />}
               />
             </InputGroup>
-            <Image
-              boxSize={'35px'}
-              display={{ base: 'none', md: 'inline' }}
-              src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dwf6281149/images/svg-icons/UI-MyAccount.svg?yocs=o_s_"
-            />
+           <UserMenu />
             <Box as={RouterLink} to='/shopping-cart'>
               <Image
                 boxSize={'30px'}

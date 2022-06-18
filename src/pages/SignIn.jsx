@@ -77,7 +77,7 @@ function SignIn() {
 
   useEffect(() =>{
     if (isAuth) {
-        if(location.state.from){
+        if(location?.state?.from){
         console.log(location.state.from);
 
           navigate(location.state.from,{replace:true});

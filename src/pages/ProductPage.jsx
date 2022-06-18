@@ -19,7 +19,8 @@ import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProduct } from '../redux/products/productSlice';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate, useLocation } from 'react-router-dom';
+import { addCartItem, getCartItems, updateCartItem } from '../redux/cart/cartSlice';
 
 const Wrapper = styled.div`
   .cart-controller {
@@ -43,8 +44,12 @@ const Wrapper = styled.div`
 `;
 
 function ProductPage() {
-  const [count, setCount] = useState(1);
+ const [count, setCount] = useState(1);
  const {isLoading,current,error} = useSelector(store => store.products);
+ const {cartItems} = useSelector(store => store.cart);
+ const  {isAuth} = useSelector(store => store.auth);
+const location = useLocation();
+ const navigate = useNavigate();
 const {id} = useParams();
  const dispatch = useDispatch();
 
@@ -56,6 +61,30 @@ const {id} = useParams();
     if (val + count < 1) return;
     if (val + count > 10) return;
     setCount(count + val);
+  };
+
+  const handleAddtoCart = e => {
+    
+
+    if (!isAuth) {
+      navigate('/sign-in', { state: { from: location.pathname } });
+      return;
+    }
+    const cartItem = cartItems.find(el => el.productId._id === current._id);
+    if (cartItem) {
+      
+      dispatch(
+        updateCartItem({
+          cartItemId: cartItem._id,
+          quantity: cartItem.quantity + count,
+        })
+      ).then(() => dispatch(getCartItems()));
+    } else {
+      // add item to cart;
+      dispatch(addCartItem({ product:current, quantity: count })).then(() =>
+        dispatch(getCartItems())
+      );
+    }
   };
 
   
@@ -122,7 +151,7 @@ const {id} = useParams();
               icon={<FiPlus color="black" />}
               onClick={() => handleCount(1)}
             />
-            <Button className="btn">ADD TO BAG</Button>
+            <Button className="btn" onClick={handleAddtoCart}>ADD TO BAG</Button>
           </HStack>
         </Box>
       </Box>

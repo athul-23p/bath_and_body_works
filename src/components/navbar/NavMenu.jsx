@@ -8,9 +8,12 @@ import {
   DrawerCloseButton,
   useDisclosure,
   IconButton,
+  Link,
+  VStack,
 } from '@chakra-ui/react';
 import { useRef } from 'react';
 import {GrMenu} from 'react-icons/gr'
+import {Link as RouterLink} from 'react-router-dom';
 function NavMenu() {
   const { isOpen, onOpen, onClose } = useDisclosure();
   const btnRef = useRef();
@@ -41,7 +44,39 @@ function NavMenu() {
             Menu
           </DrawerHeader>
 
-          <DrawerBody></DrawerBody>
+          <DrawerBody>
+            <VStack align='start'>
+              <Link
+                color="red.500"
+                fontWeight="bold"
+                as={RouterLink}
+                to="/products"
+              >
+                ALL SALE
+              </Link>
+              <Link as={RouterLink} to="/products/body care">
+                BODY CARE
+              </Link>
+              <Link as={RouterLink} to="/products/candles">
+                CANDLES
+              </Link>
+              <Link as={RouterLink} to="/products/home fragrance">
+                HOME FRAGRANCE
+              </Link>
+              <Link as={RouterLink} to="/products/hand soaps & sanitizers">
+                HAND SOAPS & SANITIZERS
+              </Link>
+              <Link as={RouterLink} to="/products">
+                MEN'S
+              </Link>
+              <Link as={RouterLink} to="/products">
+                GIFTS
+              </Link>
+              <Link as={RouterLink} to="/products">
+                BEST SELLERS
+              </Link>
+            </VStack>
+          </DrawerBody>
 
           <DrawerFooter></DrawerFooter>
         </DrawerContent>
