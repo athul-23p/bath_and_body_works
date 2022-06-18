@@ -5,6 +5,7 @@ import { fetchProducts } from "../redux/products/productSlice";
 import { useEffect } from "react";
 import ProductItem from "../components/product/ProductItem";
 import FilterComponent from "../components/product/FilterComponent";
+import Loading from "../components/Loading";
 
 function Products(){
     let  {section} = useParams();
@@ -23,6 +24,7 @@ function Products(){
     },[])
     return <Box p={4}>
     {/* heading & pagination */}
+    {isLoading && <Loading />}
     <Flex justify='space-between' align={'center'} borderBottom='2px solid #333'>
         <Heading textTransform={'capitalize'}>{section}</Heading>
         <Box>
@@ -31,7 +33,7 @@ function Products(){
         </Box>
     </Flex>
     {/* filter&sort*/}
-    <FilterComponent/>
+    {/* <FilterComponent/> */}
     <Grid templateColumns={{base:"repeat(3,1fr)",lg:'repeat(4,1fr)'}} gap={['1rem','2rem','3rem']}
      gridAutoRows='500px'
      alignItems={'end'}

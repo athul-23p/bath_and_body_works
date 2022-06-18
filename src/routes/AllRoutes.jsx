@@ -5,6 +5,7 @@ import Home from "../pages/Home";
 import Shipping from "../pages/Shipping";
 import SignIn from "../pages/SignIn";
 import SignUp from "../pages/SignUp";
+import ProductPage from "../pages/ProductPage";
 
 
 function AllRoutes(){
@@ -18,6 +19,7 @@ function AllRoutes(){
         <Route path="/checkout/review-and-submit" />
         <Route path="/products/" element={<Products />} />
         <Route path="/products/:section" element={<Products />} />
+        <Route path='/product/:id' element={<ProductPage/>} />
       </Routes>
     );
 }

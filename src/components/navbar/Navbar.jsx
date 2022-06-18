@@ -16,6 +16,7 @@ import {
 import { FiSearch } from 'react-icons/fi';
 import NavMenu from './NavMenu';
 import { useSelector } from 'react-redux';
+import {Link as RouterLink} from 'react-router-dom'
 function Navbar() {
   const { total_items } = useSelector(store => store.cart);
   return (
@@ -74,16 +75,16 @@ function Navbar() {
         fontSize={['0.70rem', '0.75rem', '0.85rem', '0.9rem']}
         my={2}
       >
-        <Link color="red.500" fontWeight="bold">
+        <Link color="red.500" fontWeight="bold" as={RouterLink} to='/products'>
           ALL SALE
         </Link>
-        <Link>BODY CARE</Link>
-        <Link>CANDLE</Link>
-        <Link>HOME FRAGRANCE</Link>
-        <Link>HAND SOAPS & SANITIZERS</Link>
-        <Link>MEN'S</Link>
-        <Link>GIFTS</Link>
-        <Link>BEST SELLERS</Link>
+        <Link as={RouterLink} to='/products/body care'>BODY CARE</Link>
+        <Link as={RouterLink} to='/products/candles'>CANDLES</Link>
+        <Link as={RouterLink} to='/products/home fragrance'>HOME FRAGRANCE</Link>
+        <Link as={RouterLink} to='/products/hand soaps & sanitizers'>HAND SOAPS & SANITIZERS</Link>
+        <Link as={RouterLink} to='/products'>MEN'S</Link>
+        <Link as={RouterLink} to='/products'>GIFTS</Link>
+        <Link as={RouterLink} to='/products'>BEST SELLERS</Link>
       </Flex>
     </Box>
   );
