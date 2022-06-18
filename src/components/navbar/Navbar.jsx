@@ -29,7 +29,7 @@ function Navbar() {
       >
         <NavMenu />
 
-        <GridItem colStart={{base:5,md:9,lg:11}} colSpan={{base:14,md:9,lg:8}} >
+        <GridItem colStart={{base:5,md:7,lg:11}} colSpan={{base:14,md:11,lg:8}} >
           <Heading color={'purple.700'} ml="auto"minW='fit-content'>
             Bath & Body Works
           </Heading>
@@ -48,7 +48,7 @@ function Navbar() {
               display={{ base: 'none', md: 'inline' }}
               src="https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/default/dwf6281149/images/svg-icons/UI-MyAccount.svg?yocs=o_s_"
             />
-            <Box>
+            <Box as={RouterLink} to='/shopping-cart'>
               <Image
                 boxSize={'30px'}
                 position="relative"

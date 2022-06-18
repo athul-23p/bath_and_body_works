@@ -18,8 +18,32 @@ import OfferBanner from './components/OfferBanner';
 import Navbar from './components/navbar/Navbar';
 import PickStore from './components/PickStore';
 import Footer from './components/footer/Footer';
+import { useEffect } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
+import { calculateTotals, clearCart, getCartItems } from './redux/cart/cartSlice';
 
 function App() {
+  const {isAuth} = useSelector(store => store.auth);
+  const {cartItems} = useSelector(store => store.cart);
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+
+    if(isAuth){
+      // fetch cart items
+      dispatch(getCartItems());
+    }
+    else{
+      dispatch(clearCart());
+    }
+  },[isAuth]);
+
+
+  useEffect(() => {
+      dispatch(calculateTotals());
+  },[cartItems])
+
+
   return (
     <ChakraProvider theme={theme}>
       <OfferBanner />

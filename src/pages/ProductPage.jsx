@@ -81,8 +81,8 @@ const {id} = useParams();
           <Text>{current?.product_type}</Text>
         </Box>
 
-        <Box display={'flex'} alignItems='center' gap={2}>
-          <FiStar/> {current?.rating?.rate} ({current?.rating?.count}){' '}
+        <Box display={'flex'} alignItems="center" gap={2}>
+          <FiStar /> {current?.rating?.rate} ({current?.rating?.count}){' '}
         </Box>
         <HStack fontWeight={'bold'}>
           <Text textDecoration={'line-through'}>
@@ -112,13 +112,15 @@ const {id} = useParams();
         <Box>
           <HStack className="cart-controller">
             <IconButton
-              icon={<FiMinus color="black" onClick={() => handleCount(-1)} />}
+              icon={<FiMinus color="black" />}
+              onClick={() => handleCount(-1)}
             />
             <Center bg="gray.200" boxSize={'40px'} textAlign="center">
               {count}
             </Center>
             <IconButton
-              icon={<FiPlus color="black" onClick={() => handleCount(1)} />}
+              icon={<FiPlus color="black" />}
+              onClick={() => handleCount(1)}
             />
             <Button className="btn">ADD TO BAG</Button>
           </HStack>
