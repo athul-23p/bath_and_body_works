@@ -14,7 +14,7 @@ import {
 import { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
-import { useNavigate } from 'react-router-dom';
+import { useLocation, useNavigate } from 'react-router-dom';
 import { Link } from 'react-router-dom';
 import { signin } from '../redux/auth/authSlice';
 const Wrapper = styled.div`
@@ -52,6 +52,7 @@ function SignIn() {
   const [inputErr, setInputErr] = useState(false);
   const dispatch = useDispatch();
   const navigate = useNavigate();
+  const location = useLocation();
   const handleChange = e => {
     const { id, value } = e.target;
     setFormData({ ...formData, [id]: value });
@@ -76,7 +77,15 @@ function SignIn() {
 
   useEffect(() =>{
     if (isAuth) {
-        navigate('/');    
+        if(location.state.from){
+        console.log(location.state.from);
+
+          navigate(location.state.from,{replace:true});
+        }
+        else{
+          navigate('/');    
+
+        }
     }
   }, [isAuth]);
   return (

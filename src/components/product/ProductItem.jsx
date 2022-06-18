@@ -1,7 +1,9 @@
 import styled from 'styled-components';
 
 import { Box, Flex, Image, Text, HStack, Button } from '@chakra-ui/react';
-import { useNavigate } from 'react-router-dom';
+import { useNavigate, useLocation } from 'react-router-dom';
+import { useSelector, useDispatch } from 'react-redux';
+import { addCartItem } from '../../redux/cart/cartSlice';
 
 const Wrapper = styled.div`
    padding:1rem;
@@ -40,27 +42,31 @@ const Wrapper = styled.div`
   }
 `;
 
-//   const product = {
-//     fragrance: { name: 'cucumber & lily', type: 'floral' },
 
-//     product_type: 'shea butter cleansing bar',
-//     rating: {
-//       rate: 4.6,
-//       count: 48,
-//     },
-//     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/dw/image/v2/BBDL_PRD/on/demandware.static/-/Sites-master-catalog/default/dwbe4f9291/hires/026394011.jpg?sh=471&yocs=o_s_',
-//     section: 'body care',
-//     qty: 40,
-//     size: '5 oz / 141g',
-//     old_price: 8.5,
-//     price: 2.13,
-//   };
 function ProductItem({product}){
 
   const navigate = useNavigate();
+  const {isAuth} = useSelector(store => store.auth);
+  const {isLoading,error,cartItems} = useSelector(store => store.cart);
+  const location = useLocation();
+  const dispatch = useDispatch();
+  // console.log(location);
 
     const handleAddtoCart = (e) => {
       e.stopPropagation();
+
+      if(!isAuth){
+        navigate('/sign-in',{state:{from:location.pathname}});
+        return;
+      }
+
+      if(cartItems.find(el => el._id === product._id)){
+        // increase quantity by 1
+      }
+      else{
+        // add item to cart;
+        dispatch(addCartItem({product,quantity:1}));
+      }
     }
     return (
       <Flex as={Wrapper} direction="column" align={'center'} 

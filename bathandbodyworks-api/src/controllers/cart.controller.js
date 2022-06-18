@@ -5,7 +5,9 @@ const Cart = require('../models/cart.model');
 
 router.post("",async (req,res) => {
     try {
-        const cartItem = await Cart.create({...req.body,userId:req.userId});
+      const {body} = req;
+  
+        const cartItem = await Cart.create({productId:body.productId,quantity:body.quantity,userId:req.user._id});
         return res.status(201).send(cartItem);
     } catch (error) {
         return res.status(400).send(error.message);
@@ -13,9 +15,9 @@ router.post("",async (req,res) => {
 });
 
 
-router.get("/:id",async(req,res) => {
+router.get("",async(req,res) => {
     try{
-        const cartItems = await Cart.find({userId:req.userId}).populate({path:"productId"}).lean().exec();
+        const cartItems = await Cart.find({userId:req.user._id}).populate({path:"productId"}).lean().exec();
         return res.status(200).send(cartItems);
     }catch(error){
         return res.status(400).send(error.message);
