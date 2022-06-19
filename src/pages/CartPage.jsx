@@ -213,7 +213,7 @@ function BillAmount() {
       <Box>
         <HStack justify={'space-between'} w="400px" my={4} color="#444">
           <Text fontSize=".8rem">MERCHANDISE SUBTOTAL</Text>
-          <Text>$ {subtotal}</Text>
+          <Text>$ {subtotal.toFixed(2)}</Text>
         </HStack>
         <HStack justify={'space-between'} w="400px" my={4} color="#444">
           <Text fontSize=".8rem">ESTIMATED SHIPPING & HANDLING - Standard</Text>

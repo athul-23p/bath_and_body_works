@@ -35,7 +35,7 @@ function CartPreview() {
           <Text w="22ch" fontSize=".9rem">
             MERCHANDISE SUBTOTAL
           </Text>
-          <Text>$ {subTotal}</Text>
+          <Text>$ {subTotal.toFixed(2)}</Text>
         </HStack>
         <HStack justify={'space-between'}>
           <Text w="22ch" fontSize=".9rem">
