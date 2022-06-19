@@ -35,7 +35,7 @@ const login = async (req, res) => {
     }
 
     const token = generateToken(user);
-    console.log(user,token);
+    // console.log(user,token);
     return res.status(200).send({ user, token });
   } catch (error) {
     return res.status(500).send(error);
