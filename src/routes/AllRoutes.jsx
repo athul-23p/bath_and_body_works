@@ -9,6 +9,7 @@ import ProductPage from '../pages/ProductPage';
 import CartPage from '../pages/CartPage';
 import PrivateRoute from './PrivateRoute';
 import PaymentPage from '../pages/PaymentPage';
+import { Center, Heading } from '@chakra-ui/react';
 
 function AllRoutes() {
   return (
@@ -53,7 +54,10 @@ function AllRoutes() {
           </PrivateRoute>
         }
       />
-    </Routes>
+      <Route path='*' element={<Center>
+            <Heading>404 Resource Not Found</Heading>
+      </Center>} />
+      </Routes>
   );
 }
 

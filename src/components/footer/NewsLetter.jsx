@@ -14,13 +14,13 @@ function NewsLetter() {
       <form>
         <Text>Get email offers & the latest news from Bath & Body Works!</Text>
         <FormControl>
-          <FormLabel htmlFor="email">Enter Email</FormLabel>
-          <Input borderRadius={'none'} id="email" />
+          <FormLabel htmlFor="subscribe_email">Enter Email</FormLabel>
+          <Input borderRadius={'none'} id="subscribe_email" />
         </FormControl>
         <FormControl>
-          <FormLabel htmlFor="confirm">Confirm Email</FormLabel>
+          <FormLabel htmlFor="subscribe_confirm">Confirm Email</FormLabel>
           <Flex>
-            <Input borderRadius={'none'} id="confirm" />
+            <Input borderRadius={'none'} id="subscribe_confirm" />
             <Button
               borderRadius={'none'}
               bg="blackAlpha.800"

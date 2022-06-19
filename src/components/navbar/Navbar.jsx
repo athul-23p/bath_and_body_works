@@ -30,12 +30,22 @@ function Navbar() {
       >
         <NavMenu />
 
-        <GridItem colStart={{base:8,md:7,lg:11}} colSpan={{base:11,md:7,lg:8}} >
-          <Heading color={'purple.700'} ml="auto"minW='fit-content'>
-            Bath & Body Works
-          </Heading>
+        <GridItem
+          colStart={{ base: 8, md: 7, lg: 10 }}
+          colSpan={{ base: 11, md: 9, lg: 7 }}
+        >
+          <RouterLink to="/">
+            <Heading
+              color={'purple.700'}
+              ml="auto"
+              minW="fit-content"
+              
+            >
+              Bath & Body Works
+            </Heading>
+          </RouterLink>
         </GridItem>
-        <GridItem colStart={{base:19,md:19}} colSpan={{base:5,md:6}}>
+        <GridItem colStart={{ base: 19, md: 19 }} colSpan={{ base: 5, md: 6 }}>
           <HStack justifySelf={'end'} spacing={'1.2rem'}>
             <InputGroup w="20vw" display={{ base: 'none', md: 'inline' }}>
               <Input placeholder="Search by fragrance or product" />
@@ -44,8 +54,8 @@ function Navbar() {
                 children={<FiSearch color="purple" />}
               />
             </InputGroup>
-           <UserMenu />
-            <Box as={RouterLink} to='/shopping-cart'>
+            <UserMenu />
+            <Box as={RouterLink} to="/shopping-cart">
               <Image
                 boxSize={'30px'}
                 position="relative"
@@ -72,16 +82,30 @@ function Navbar() {
         fontSize={['0.70rem', '0.75rem', '0.85rem', '0.9rem']}
         my={2}
       >
-        <Link color="red.500" fontWeight="bold" as={RouterLink} to='/products'>
+        <Link color="red.500" fontWeight="bold" as={RouterLink} to="/products">
           ALL SALE
         </Link>
-        <Link as={RouterLink} to='/products/body care'>BODY CARE</Link>
-        <Link as={RouterLink} to='/products/candles'>CANDLES</Link>
-        <Link as={RouterLink} to='/products/home fragrance'>HOME FRAGRANCE</Link>
-        <Link as={RouterLink} to='/products/hand soaps & sanitizers'>HAND SOAPS & SANITIZERS</Link>
-        <Link as={RouterLink} to='/products'>MEN'S</Link>
-        <Link as={RouterLink} to='/products'>GIFTS</Link>
-        <Link as={RouterLink} to='/products'>BEST SELLERS</Link>
+        <Link as={RouterLink} to="/products/body care">
+          BODY CARE
+        </Link>
+        <Link as={RouterLink} to="/products/candles">
+          CANDLES
+        </Link>
+        <Link as={RouterLink} to="/products/home fragrance">
+          HOME FRAGRANCE
+        </Link>
+        <Link as={RouterLink} to="/products/hand soaps & sanitizers">
+          HAND SOAPS & SANITIZERS
+        </Link>
+        <Link as={RouterLink} to="/products">
+          MEN'S
+        </Link>
+        <Link as={RouterLink} to="/products">
+          GIFTS
+        </Link>
+        <Link as={RouterLink} to="/products">
+          BEST SELLERS
+        </Link>
       </Flex>
     </Box>
   );

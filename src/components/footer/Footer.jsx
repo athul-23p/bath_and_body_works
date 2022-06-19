@@ -49,12 +49,9 @@ const connected = [
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1655199971951/images/svg-icons/Social-tiktok-reverse.svg?yocs=o_s_',
-    to: '',
-  },
-  {
-    img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1655199971951/images/svg-icons/Social-fb-reverse.svg?yocs=o_s_',
     to: 'https://www.tiktok.com/@bathandbodyworks',
   },
+  
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/Sites-BathAndBodyWorks-Site/-/en_US/v1655199971951/images/svg-icons/Social-youtube-reverse.svg?yocs=o_s_',
     to: 'https://www.youtube.com/user/bathandbodyworks/',
@@ -67,7 +64,13 @@ const connected = [
 const findUs = ['Store Locatior', 'Global Locations'];
 function Footer() {
   return (
-    <Box fontSize={'0.8rem'} my={4} mx="auto" pt={8} borderTop="4px solid lightgrey">
+    <Box
+      fontSize={'0.8rem'}
+      my={4}
+      mx="auto"
+      pt={8}
+      borderTop="4px solid lightgrey"
+    >
       <Box w="100%" maxW="1100px" mx="auto">
         <Flex>
           <Box>
@@ -79,8 +82,15 @@ function Footer() {
                   <IconButton
                     as="a"
                     href={link.to}
-                    icon="dd"
-                    borderRadius={'full'}
+                    icon={
+                      <Image
+                        src={link.img}
+                        boxSize="40px"
+                        objectFit={'cover'}
+                        bg="grey"
+                        borderRadius={'full'}
+                      />
+                    }
                   />
                 ))}
               </HStack>
