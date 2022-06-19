@@ -73,7 +73,7 @@ function ProductItem({product}){
       <Flex as={Wrapper} direction="column" align={'center'} 
         onClick={() => navigate(`/product/${product._id}`)}
       >
-        {/* <Image src={product.img} /> */}
+        <Image src={product.img} />
         <Text className='fragrance' objectFit={'cover'}>
           {product.fragrance.name}
         </Text>

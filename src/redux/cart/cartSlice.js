@@ -92,6 +92,24 @@ export const deleteCartItem = createAsyncThunk(
   }
 );
 
+export const clearCart = createAsyncThunk(
+  'cart/clearCart',
+  async (_, thunkAPI) => {
+    try {
+      console.log(thunkAPI);
+      const state = thunkAPI.getState();
+      const config = {
+        headers: { Authorization: `Bearer ${state.auth.token}` },
+      };
+      const res = await axios.delete(baseUrl + `/cart/clearCart`, config);
+
+      return res;
+    } catch (error) {
+      return thunkAPI.rejectWithValue('Something went wrong');
+    }
+  }
+);
+
 
 
 
@@ -99,11 +117,11 @@ const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    clearCart: state => {
+    clearCartLocal: state => {
       // state.cartItems = [];
       return initialState;
     },
-  
+
     calculateTotals: state => {
       let amount = 0;
       let total = 0;
@@ -164,10 +182,23 @@ const cartSlice = createSlice({
       state.isLoading = false;
       state.error = action.payload;
     },
+
+    [clearCart.pending]: state => {
+      state.isLoading = true;
+      state.error = null;
+    },
+    [clearCart.fulfilled]: (state, action) => {
+      state.isLoading = false;
+      state.cartItems = [];
+    },
+    [clearCart.rejected]: (state, action) => {
+      state.isLoading = false;
+      state.error = action.payload;
+    },
   },
 });
 
 // console.log(cartSlice);
-export const { clearCart,calculateTotals } = cartSlice.actions;
+export const { clearCartLocal,calculateTotals } = cartSlice.actions;
 
 export default cartSlice.reducer;

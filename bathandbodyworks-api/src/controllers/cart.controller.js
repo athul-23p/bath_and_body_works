@@ -35,6 +35,15 @@ router.patch("/:id/:newQty",async (req,res) => {
     return res.status(400).send(err.message);
   }  
 })
+router.delete('/clearCart/', async (req, res) => {
+  try {
+    console.log(req.user._id);
+    const cartItem = await Cart.deleteMany({ userId: req.user._id });
+    return res.status(200).send(cartItem);
+  } catch (err) {
+    return res.status(400).send(err.message);
+  }
+});
 
 router.delete('/:id', async (req, res) => {
   try {
@@ -44,6 +53,7 @@ router.delete('/:id', async (req, res) => {
     return res.status(400).send(err.message);
   }
 });
+
 
 
 module.exports = router;

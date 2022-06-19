@@ -20,7 +20,7 @@ import PickStore from './components/PickStore';
 import Footer from './components/footer/Footer';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { calculateTotals, clearCart, getCartItems } from './redux/cart/cartSlice';
+import { calculateTotals, clearCart, clearCartLocal, getCartItems } from './redux/cart/cartSlice';
 
 function App() {
   const {isAuth} = useSelector(store => store.auth);
@@ -34,7 +34,7 @@ function App() {
       dispatch(getCartItems());
     }
     else{
-      dispatch(clearCart());
+      dispatch(clearCartLocal());
     }
   },[isAuth]);
 
