@@ -6,7 +6,8 @@ const initialState = {
   cartItems: [],
   amount: 0,
   total_items: 0,
-  isLoading: true,
+  isLoading: false,
+  error:null
 };
 
 export const getCartItems = createAsyncThunk(
@@ -30,7 +31,7 @@ export const addCartItem = createAsyncThunk(
   'cart/addCartItem',
   async ({ product, quantity }, thunkAPI) => {
     try {
-      console.log(thunkAPI);
+      // console.log(thunkAPI);
       const state = thunkAPI.getState();
       const config = {
         headers: { Authorization: `Bearer ${state.auth.token}` },

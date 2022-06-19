@@ -21,7 +21,9 @@ function Products(){
     }
     useEffect(() => {
         dispatch(fetchProducts(params));
-    },[])
+    },[section]);
+
+    
     return <Box p={4}>
     {/* heading & pagination */}
     {isLoading && <Loading />}
@@ -33,7 +35,7 @@ function Products(){
         </Box>
     </Flex>
     {/* filter&sort*/}
-    {/* <FilterComponent/> */}
+    <FilterComponent/>
     <Grid templateColumns={{base:"repeat(3,1fr)",lg:'repeat(4,1fr)'}} gap={['1rem','2rem','3rem']}
      gridAutoRows='500px'
      alignItems={'end'}

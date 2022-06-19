@@ -59,26 +59,32 @@ const categories = [
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw6c17f327/images/JuneSAS2022/bc_bfs_junsas_vn.jpg?yocs=o_s_',
     name: 'Body Care',
+    link: '/products/body care',
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw17d09c85/images/JuneSAS2022/cndl_bfs_junsas_vn.jpg?yocs=o_s_',
     name: 'Candles',
+    link: '/products/candles',
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw879d9238/images/JuneSAS2022/diff_distressed_junsas_vn.jpg?yocs=o_s_',
     name: 'Wallflowers',
+    link: '/products/home fragrance',
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw5d9dcf2e/images/JuneSAS2022/sp_bfs_junsas_vn.jpg?yocs=o_s_',
     name: 'Hand Soaps',
+    link: '/products/hand soaps & sanitizers',
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dwd960fba3/images/JuneSAS2022/sn_distressed_junsas_vn.jpg?yocs=o_s_',
     name: 'Hand Sanitizers',
+    link: '/products/hand soaps & sanitizers',
   },
   {
     img: 'https://cdn-fsly.yottaa.net/5d669b394f1bbf7cb77826ae/www.bathandbodyworks.com/v~4b.216/on/demandware.static/-/Sites-BathAndBodyWorks-Library/default/dw67661151/images/JuneSAS2022/xcat_bfs_junsas_vn.jpg?yocs=o_s_',
     name: 'All Sale',
+    link:'/products'
   },
 ];
 
@@ -221,12 +227,7 @@ function Home() {
 
       <Box as="section" bg="#f2f2f2" p={10} my={4} mx={'-32px'}>
         <Heading>Today's Top Offers</Heading>
-        {/* <Flex flexWrap={'wrap'} overflow="hidden">
-    
-          {todays_Offers.map(offer => (
-            <OfferBox {...offer} />
-          ))}
-        </Flex> */}
+      
 
         <AliceCarousel
           mouseTracking
@@ -264,7 +265,7 @@ function Home() {
           {categories.map(cat => (
             <GridItem>
               <Image src={cat.img} />
-              <Link textDecoration={'underline'}>{cat.name}</Link>
+              <Link as={RouterLink} textDecoration={'underline'} to={cat.link}>{cat.name}</Link>
             </GridItem>
           ))}
         </Grid>

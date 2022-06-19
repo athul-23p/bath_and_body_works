@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import { Box, Flex, Image, Text, HStack, Button } from '@chakra-ui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
-import { addCartItem } from '../../redux/cart/cartSlice';
+import { addCartItem, getCartItems, updateCartItem } from '../../redux/cart/cartSlice';
 
 const Wrapper = styled.div`
    padding:1rem;
@@ -59,20 +59,21 @@ function ProductItem({product}){
         navigate('/sign-in',{state:{from:location.pathname}});
         return;
       }
-
-      if(cartItems.find(el => el._id === product._id)){
+      const cartItem = cartItems.find(el => el.productId._id === product._id)
+      if(cartItem){
         // increase quantity by 1
+        dispatch(updateCartItem({cartItemId:cartItem._id,quantity:cartItem.quantity+1})).then(() => dispatch(getCartItems()));
       }
       else{
         // add item to cart;
-        dispatch(addCartItem({product,quantity:1}));
+        dispatch(addCartItem({product,quantity:1})).then(() => dispatch(getCartItems()));
       }
     }
     return (
       <Flex as={Wrapper} direction="column" align={'center'} 
         onClick={() => navigate(`/product/${product._id}`)}
       >
-        <Image src={product.img} />
+        {/* <Image src={product.img} /> */}
         <Text className='fragrance' objectFit={'cover'}>
           {product.fragrance.name}
         </Text>

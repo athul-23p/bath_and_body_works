@@ -15,7 +15,22 @@ import {
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import CartPreview from '../components/checkout/CartPreview';
+import { useSelector, useDispatch } from 'react-redux';
+import styled from 'styled-components';
+import { setShippingAddress } from '../redux/orders/orderSlice';
 
+const Wrapper = styled.div`
+  .link {
+    border-radius: 0px;
+    background-color: #333;
+    color: white;
+    font-size: 0.9rem;
+    &:hover {
+      background-color: #e8ebed;
+      color: #333;
+    }
+  }
+`;
 function Shipping() {
   const [formData, setFormData] = useState({
     first_name:"",
@@ -30,7 +45,11 @@ function Shipping() {
     shippng_method:""
 
   });
+  const [inputErr, setInputErr] = useState(false);
   const navigate = useNavigate();
+  const {user} = useSelector(store => store.auth);
+  const {isLoading} = useSelector(store => store.orders);
+  const dispatch = useDispatch();
   const handleChange = e => {
     const {name,value} = e.target;
     setFormData({...formData,[name]:value})
@@ -39,29 +58,35 @@ function Shipping() {
   const handleGotoBilling = () => {
     for(let key in formData){
       if(formData[key] === ""){
-        // return 
-      } 
-        
+       setInputErr(true);
+         return;
+       }
+     
+
+     if (inputErr) {
+       setInputErr(false);
+     }
+  
+      dispatch(setShippingAddress(formData)); 
+      navigate('/checkout/billing');
     }
-    navigate('/checkout/billing');
   }
   return (
-    <Box>
-      <Box>progress bar</Box>
-      <Flex gap='10' justify={'space-between'}>
-        <Box w='500px'>
+    <Box as={Wrapper}>
+      <Flex gap="10" justify={'space-between'} my={4}>
+        <Box w="500px">
           <Box>
             <Heading>WELCOME BACK</Heading>
-            <Heading color="purple">HI user,</Heading>
-            <Text>
+            <Heading color="purple">Hi,{user}!</Heading>
+            <Text color="#444" fontSize={'.9rem'}>
               Thanks for logging in. We noticed we don't have a shipping address
               saved for you. Update and save below for faster checkout next
               time.
             </Text>
           </Box>
-          <Box>
+          <Box my={4}>
             <Heading>SHIPPING ADDRESS</Heading>
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="first_name">First Name</FormLabel>
               <Input
                 id="first_name"
@@ -70,7 +95,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="last_name">Last Name</FormLabel>
               <Input
                 id="last_name"
@@ -79,7 +104,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="address_1">Address 1</FormLabel>
               <Input
                 id="address_1"
@@ -88,7 +113,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="address_2">Address 2</FormLabel>
               <Input
                 id="address_2"
@@ -97,7 +122,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="country">Country</FormLabel>
               <Input
                 id="country"
@@ -106,7 +131,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="city">City</FormLabel>
               <Input
                 id="city"
@@ -115,7 +140,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="state">State</FormLabel>
               <Input
                 id="state"
@@ -124,7 +149,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="zip_code">ZIP code</FormLabel>
               <Input
                 id="zip_code"
@@ -133,7 +158,7 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="phone">Phone</FormLabel>
               <Input
                 id="phone"
@@ -142,17 +167,19 @@ function Shipping() {
                 onChange={handleChange}
               />
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor=""></FormLabel>
-              <Checkbox id="save_to_addresses" name='save_to_addresses'>Save to Addresses</Checkbox>
+              <Checkbox id="save_to_addresses" name="save_to_addresses">
+                Save to Addresses
+              </Checkbox>
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor=""></FormLabel>
-              <Checkbox id="address_for_billing" name='address_for_billing'>
+              <Checkbox id="address_for_billing" name="address_for_billing">
                 Use Address for Billing
               </Checkbox>
             </FormControl>{' '}
-            <FormControl>
+            <FormControl my={2}>
               <FormLabel htmlFor="">Are you shipping a gift ?</FormLabel>
               <RadioGroup>
                 <Radio name="is_a_gift" value="true">
@@ -189,9 +216,13 @@ function Shipping() {
               </Stack>
             </RadioGroup>
           </Box>
-          <Button onClick={handleGotoBilling}>GO TO BILLING</Button>
+          <Button onClick={handleGotoBilling} className="link" my={4} isLoading={isLoading}>
+            GO TO BILLING
+          </Button>
+          {/* {error && <Text>{error}</Text>} */}
+          {inputErr && <Text color='red.600'>Please fill all fields</Text>}
         </Box>
-        <CartPreview/>
+        <CartPreview />
       </Flex>
     </Box>
   );

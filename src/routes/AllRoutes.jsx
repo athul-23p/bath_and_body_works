@@ -8,6 +8,7 @@ import SignUp from '../pages/SignUp';
 import ProductPage from '../pages/ProductPage';
 import CartPage from '../pages/CartPage';
 import PrivateRoute from './PrivateRoute';
+import PaymentPage from '../pages/PaymentPage';
 
 function AllRoutes() {
   return (
@@ -31,7 +32,16 @@ function AllRoutes() {
           </PrivateRoute>
         }
       />
-      {/* <Route path="/checkout/review-and-submit" /> */}
+      <Route
+        path="/payment"
+        element={
+          <PrivateRoute>
+            <PaymentPage />
+           </PrivateRoute>
+        }
+      />
+     
+
       <Route path="/products/" element={<Products />} />
       <Route path="/products/:section" element={<Products />} />
       <Route path="/product/:id" element={<ProductPage />} />
