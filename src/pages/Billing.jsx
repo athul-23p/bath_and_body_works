@@ -9,8 +9,9 @@ import {
 } from '@chakra-ui/react';
 import CartPreview from '../components/checkout/CartPreview';
 import styled from 'styled-components';
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router-dom';
+import { setItems } from '../redux/orders/orderSlice';
 
 const Wrapper = styled.div`
   .link {
@@ -48,6 +49,8 @@ function Billing() {
     expiry_year:"",
     cvv:""
   });
+  const dispatch = useDispatch();
+  const {cartItems} = useSelector(store => store.cart);
   const navigate = useNavigate();
   const handleCardDetails = (e) => {
     const {name,value} = e.target;
@@ -73,7 +76,7 @@ function Billing() {
      if (inputErr) {
        setInputErr(false);
      }
-  
+     dispatch(setItems(cartItems));
      navigate('/payment');
   }
 
