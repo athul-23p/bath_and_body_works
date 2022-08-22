@@ -45,7 +45,7 @@ function NavMenu() {
           </DrawerHeader>
 
           <DrawerBody>
-            <VStack align='start'>
+            <VStack align="start">
               <Link
                 color="red.500"
                 fontWeight="bold"
@@ -54,16 +54,19 @@ function NavMenu() {
               >
                 ALL SALE
               </Link>
-              <Link as={RouterLink} to="/products/body care">
+              <Link as={RouterLink} to="/products?section=body care">
                 BODY CARE
               </Link>
-              <Link as={RouterLink} to="/products/candles">
+              <Link as={RouterLink} to="/products?section=candles">
                 CANDLES
               </Link>
-              <Link as={RouterLink} to="/products/home fragrance">
+              <Link as={RouterLink} to="/products?section=home fragrance">
                 HOME FRAGRANCE
               </Link>
-              <Link as={RouterLink} to="/products/hand soaps & sanitizers">
+              <Link
+                as={RouterLink}
+                to="/products?section=hand soaps %26 sanitizers"
+              >
                 HAND SOAPS & SANITIZERS
               </Link>
               <Link as={RouterLink} to="/products">
