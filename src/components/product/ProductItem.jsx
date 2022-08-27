@@ -4,6 +4,7 @@ import { Box, Flex, Image, Text, HStack, Button } from '@chakra-ui/react';
 import { useNavigate, useLocation } from 'react-router-dom';
 import { useSelector, useDispatch } from 'react-redux';
 import { addCartItem, getCartItems, updateCartItem } from '../../redux/cart/cartSlice';
+import RatingStrip from '../RatingStrip';
 
 const Wrapper = styled.div`
    padding:1rem;
@@ -82,7 +83,8 @@ function ProductItem({product}){
             <Text className='old_price'>$ {product.old_price.toFixed(2)}</Text>
             <Text className='price'>$ {product.price.toFixed(2)}</Text>
         </HStack>
-        <Button className='btn' onClick={handleAddtoCart}>Add to bag</Button>
+        <Button className='btn' onClick={handleAddtoCart} mb={2}>Add to bag</Button>
+        <RatingStrip rating={product.rating.rate} />
       </Flex>
     );
 }

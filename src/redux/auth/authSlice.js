@@ -75,7 +75,7 @@ const authSlice = createSlice({
     },
   },
 });
-console.log(authSlice);
+// console.log(authSlice);
 export const {signOut} = authSlice.actions;
 
 export default authSlice.reducer;

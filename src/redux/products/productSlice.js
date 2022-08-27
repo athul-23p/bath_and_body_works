@@ -15,11 +15,11 @@ const initialState = {
 
 export const fetchProducts = createAsyncThunk('products/fetchProducts',async(params,thunkAPI) => {
     try {
-        console.log(params);
+        // console.log(params);
         const res = await axios.get(baseUrl + '/products',{
             params:params
         });
-        console.log(res);
+        // console.log(res);
         return res;
     } catch (error) {
         return thunkAPI.rejectWithValue('Something went wrong');
@@ -56,7 +56,7 @@ const productSlice = createSlice({
     [fetchProducts.fulfilled]: (state, { type, payload }) => {
       state.isLoading = false;
       state.data = payload.data.docs;
-      delete payload.data.docs;
+      // delete payload.data.docs;
       state.stats = payload.data;
     },
     [fetchProducts.rejected]: (state, { type, payload }) => {

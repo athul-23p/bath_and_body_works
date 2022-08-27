@@ -15,12 +15,14 @@ import {
 } from '@chakra-ui/react';
 import { useState } from 'react';
 import { FiTruck, FiMinus, FiPlus, FiStar } from 'react-icons/fi';
+
 import styled from 'styled-components';
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { fetchProduct } from '../redux/products/productSlice';
 import { useParams, useNavigate, useLocation } from 'react-router-dom';
 import { addCartItem, getCartItems, updateCartItem } from '../redux/cart/cartSlice';
+import RatingStrip from '../components/RatingStrip';
 
 const Wrapper = styled.div`
   .cart-controller {
@@ -111,7 +113,8 @@ const {id} = useParams();
         </Box>
 
         <Box display={'flex'} alignItems="center" gap={2}>
-          <FiStar /> {current?.rating?.rate} ({current?.rating?.count}){' '}
+          <RatingStrip rating={current.rating.rate || 0} />
+          {current?.rating?.rate} ({current?.rating?.count}){' '}
         </Box>
         <HStack fontWeight={'bold'}>
           <Text textDecoration={'line-through'}>
