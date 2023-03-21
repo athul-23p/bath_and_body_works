@@ -21,6 +21,7 @@ import Footer from './components/footer/Footer';
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { calculateTotals, clearCart, clearCartLocal, getCartItems } from './redux/cart/cartSlice';
+import ErrorBoundary from './components/ErrorBoundary';
 
 function App() {
   const {isAuth} = useSelector(store => store.auth);
@@ -49,8 +50,11 @@ function App() {
       <OfferBanner />
       <PickStore />
       <Navbar />
+
       <Box w="100%" maxW="1100px" mx="auto">
+      <ErrorBoundary fallback={<p>Something went wrong</p>}>
         <AllRoutes />
+      </ErrorBoundary>
       </Box>
         <Footer />
       <Box bg="#f2f2f2" p={4} fontSize="0.85rem" >

@@ -113,7 +113,7 @@ const {id} = useParams();
         </Box>
 
         <Box display={'flex'} alignItems="center" gap={2}>
-          <RatingStrip rating={current.rating.rate || 0} />
+          <RatingStrip rating={current?.rating?.rate || 0} />
           {current?.rating?.rate} ({current?.rating?.count}){' '}
         </Box>
         <HStack fontWeight={'bold'}>
