@@ -4,6 +4,7 @@ import * as ReactDOM from 'react-dom/client';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import App from './App';
+import ScrollToTop from './components/ScrollToTop';
 import { store } from './redux/store';
 import reportWebVitals from './reportWebVitals';
 import * as serviceWorker from './serviceWorker';
@@ -15,6 +16,7 @@ root.render(
   <StrictMode>
     <ColorModeScript />
     <BrowserRouter>
+      <ScrollToTop/>
     <Provider store={store}>
       <App />
 

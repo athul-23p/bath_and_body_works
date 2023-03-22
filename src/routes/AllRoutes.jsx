@@ -38,11 +38,11 @@ function AllRoutes() {
         element={
           <PrivateRoute>
             <PaymentPage />
-           </PrivateRoute>
+          </PrivateRoute>
         }
       />
-     
 
+      
       <Route path="/products/" element={<Products />} />
       <Route path="/products/:section" element={<Products />} />
       <Route path="/product/:id" element={<ProductPage />} />
@@ -54,10 +54,15 @@ function AllRoutes() {
           </PrivateRoute>
         }
       />
-      <Route path='*' element={<Center>
+      <Route
+        path="*"
+        element={
+          <Center>
             <Heading>404 Resource Not Found</Heading>
-      </Center>} />
-      </Routes>
+          </Center>
+        }
+      />
+    </Routes>
   );
 }
 
